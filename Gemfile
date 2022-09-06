@@ -10,6 +10,10 @@ end
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 # Use pg as the database for Active Record
 gem 'pg'
+# Use devise for authentication and session management
+gem 'devise'
+
+gem 'devise-jwt'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
