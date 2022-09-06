@@ -310,6 +310,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.jwt do |jwt|
-    jwt.secret = "d6c84205e0fbee4023095ce5c4fc1ef9704f7a2bb6bfd5c3c1e7cd7f67e980b0db98613142e5a1f82c1d0dddaaba9445b56b1fbae6a7d7d5d444c56b29687c8b"
+    jwt.secret = 'd6c84205e0fbee4023095ce5c4fc1ef9704f7a2bb6bfd5c3c1e7cd7f67e980b0db98613142e5a1f82c1d0dddaaba9445b56b1fbae6a7d7d5d444c56b29687c8b'
   end
 end
