@@ -4,6 +4,7 @@ class CommentsController < BaseController
   # POST /comments
   def create
     @comment = @commentable.comments.new(comment_params)
+    @comment.user_id = current_user.id
 
     if @comment.save
       render json: @comment, status: :created
