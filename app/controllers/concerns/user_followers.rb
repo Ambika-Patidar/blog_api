@@ -9,7 +9,10 @@ module UserFollowers
 
   def fetch_following_user_articles
     current_user.followings.includes(:articles).map do |following|
-      { following_user_id: following.id, articles: following.articles }
+      articles = following.articles.map do |article|
+        { article: article, comments: article.comments }
+      end
+      { following_user_id: following.id, articles: articles }
     end
   end
 end
