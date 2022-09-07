@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   devise_for :users,
              defaults: { format: :json },
              path: '',
@@ -13,7 +14,14 @@ Rails.application.routes.draw do
              }
 
   constraints format: :json do
-    resources :articles, only: %i[create show]
+    resources :comments do
+      resources :comments, only: :create
+    end
+
+    resources :articles, only: %i[create show] do
+      resources :comments, only: :create
+    end
+
     resources :users, only: :index do
       collection do
         get 'search', to: 'search'
