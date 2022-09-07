@@ -6,7 +6,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
-  validates :full_name, presence: true
+  has_many :articles
+
+  validates :full_name, :status, presence: true
+
+  enum statuses: { '0': 'public', '1': 'private' }
 
   def jwt_payload
     super.merge('foo' => 'bar')

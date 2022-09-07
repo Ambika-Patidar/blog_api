@@ -13,11 +13,10 @@ Rails.application.routes.draw do
              }
 
   constraints format: :json do
-    namespace :api do
-      resources :users, only: :index do
-        collection do
-          get 'search', to: 'search'
-        end
+    resources :articles, only: %i[create show]
+    resources :users, only: :index do
+      collection do
+        get 'search', to: 'search'
       end
     end
   end
