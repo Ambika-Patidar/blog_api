@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_many :articles
+  has_many :likes
+  has_many :comments
   # Will return an array of follows for the given user instance
   has_many :received_follows, foreign_key: :followed_user_id, class_name: 'Follow', dependent: :destroy
   # Will return an array of users who follow the user instance

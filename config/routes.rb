@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
   resources :comments
   devise_for :users,
              defaults: { format: :json },
@@ -15,10 +16,12 @@ Rails.application.routes.draw do
 
   constraints format: :json do
     resources :comments do
+      resources :likes, only: :create
       resources :comments, only: :create
     end
 
     resources :articles, only: %i[create show] do
+      resources :likes, only: :create
       resources :comments, only: :create
     end
 
