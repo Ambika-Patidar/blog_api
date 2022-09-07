@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       collection do
         get 'search', to: 'search'
         get 'following_user_articles', to: 'following_user_articles'
+        get 'list_of_following_or_followers', to: 'list_of_following_or_followers'
       end
       member do
         post 'follow', to: 'follow'

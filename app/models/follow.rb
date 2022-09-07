@@ -4,5 +4,5 @@ class Follow < ApplicationRecord
   # The user being followed
   belongs_to :followed_user, foreign_key: :followed_user_id, class_name: 'User'
 
-  enum requests: { '0': 'accepted', '1': 'pending' } 
+  enum requests: { '0' => 'accepted', '1' => 'pending' }
 end

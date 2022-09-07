@@ -1,4 +1,5 @@
 class UsersController < BaseController
+  include UserFollowers
   before_action :assign_user, only: %i[follow unfollow accept]
 
   def index
@@ -32,8 +33,13 @@ class UsersController < BaseController
   end
 
   def following_user_articles
-    articles = current_user.followings.includes(:articles).map { |following| { following_user_id: following.id, articles: following.articles } }
+    articles = fetch_following_user_articles
     render_response(articles)
+  end
+
+  def list_of_following_or_followers
+    users = fetch_list_of_following_or_followers
+    render_response(users)
   end
 
   private

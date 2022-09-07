@@ -18,9 +18,9 @@ class User < ApplicationRecord
 
   validates :full_name, :status, presence: true
 
-  enum statuses: { '0': 'public', '1': 'private' }
+  enum statuses: { '0' => 'public', '1' => 'private' }
 
   def jwt_payload
-    super.merge('foo': 'bar')
+    super.merge('foo' => 'bar')
   end
 end
