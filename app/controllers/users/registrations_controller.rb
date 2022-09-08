@@ -12,10 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    resource.save
-    sign_up(resource_name, resource) if resource.persisted?
-
-    render_response(resource, :created)
+    if resource.save
+      sign_up(resource_name, resource) if resource.persisted?
+      render_response(resource, :created)
+    else
+      render_response(resource.errors, :unprocessable_entity)
+    end
   end
 
   # GET /resource/edit
